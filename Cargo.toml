@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 license = "MIT"
 description = "OpenTelemetry spans for LLM calls, cost per department, time-saved ROI, silent-failure alerts and usage billing."
-repository = "https://github.com/braylo-ai/fde-09-llm-telemetry"
+repository = "https://github.com/braylo777/fde-09-llm-telemetry"
 
 [lib]
 crate-type = ["rlib", "cdylib"]
