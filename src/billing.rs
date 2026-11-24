@@ -59,14 +59,8 @@ pub fn meter_op(i: &Value) -> Result<Value, String> {
         if c.status != "ok" {
             continue; // failed calls are not billed
         }
-        *tokens
-            .entry(if c.customer.is_empty() {
-                "(none)".into()
-            } else {
-                c.customer.clone()
-            })
-            .or_default();
-        let e = tokens.get_mut(if c.customer.is_empty() { "(none)" } else { c.customer.as_str() }).unwrap();
+        let key = if c.customer.is_empty() { "(none)".to_string() } else { c.customer.clone() };
+        let e = tokens.entry(key).or_default();
         *e = e
             .checked_add(c.input_tokens)
             .and_then(|x| x.checked_add(c.output_tokens))
